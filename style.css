@@ -209,3 +209,179 @@ h1 {
     text-transform: uppercase;
     font-weight: 600;
 }
+:root {
+    --primary: #b45309;
+    --accent: #d97706;
+    --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    --glass: rgba(255, 255, 255, 0.7);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    color: #444;
+    overflow-x: hidden;
+}
+
+.minimal-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* --- NUEVO HEADER Y LOGO --- */
+.top-nav {
+    margin-bottom: 2rem;
+    animation: dropIn 1s ease forwards;
+}
+
+.logo-container {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+}
+
+.main-logo { width: 100%; height: auto; object-fit: contain; }
+
+/* --- HERO SECTION --- */
+.hero h1 { font-size: 2.5rem; margin-top: 1rem; line-height: 1.1; }
+.accent { color: var(--primary); font-weight: 600; }
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #fff;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+}
+
+/* --- ABOUT ME CON ESTILO --- */
+.about-me {
+    margin-top: 3rem;
+    position: relative;
+}
+
+.profile-frame {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto -40px;
+    z-index: 2;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: var(--shadow);
+}
+
+.glass {
+    background: var(--glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    padding: 60px 20px 20px;
+    box-shadow: var(--shadow);
+}
+
+/* --- BOTONES Y ACCIONES --- */
+.btn-live {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    margin: 2rem 0;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-live:hover { transform: scale(1.05); }
+
+/* --- SOCIAL GRID --- */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 1.5rem;
+}
+
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #444;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
+}
+
+.glass-hover:hover {
+    background: white;
+    transform: translateY(-5px);
+}
+
+.signature {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    color: var(--primary);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes dropIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .hero h1 { font-size: 2rem; }
+    .social-grid { grid-template-columns: 1fr; }
+}
+/* Esto asegura que si por algo el JS falla, el contenido sea legible */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+    visibility: hidden; /* Evita que ocupen espacio visual antes de tiempo */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
